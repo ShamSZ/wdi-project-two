@@ -6,7 +6,7 @@
   <img width="300px" height="200px" src="<%= restaurant.image %>"/></a>
   <p>
   <span>Cuisine: <%= restaurant.cuisine %></span>
-  <span>Price: <%= restaurant.price %></span>
+  <span>Price: <%= '£'.repeat(restaurant.price) %></span>
   <span>Rating: <%= '⭐️'.repeat(restaurant.rating) %></span>
   </p>
 <% }) %>

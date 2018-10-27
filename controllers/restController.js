@@ -15,9 +15,22 @@ const showRest = (req, res) => {
   });
 };
 
+const newRest = (req, res) => {
+  res.render('restaurants/new');
+};
+
+const createRest = (req, res) => {
+  Restaurant.create(req.body).then(restaurant => {
+    console.log('Created a new Restaurant', restaurant);
+    res.redirect(`/restaurants/${restaurant._id}`);
+  });
+};
+
 module.exports = {
   home: home,
   about: about,
   index: indexRest,
-  show: showRest
+  show: showRest,
+  new: newRest,
+  create: createRest
 };
