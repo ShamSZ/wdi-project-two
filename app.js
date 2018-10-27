@@ -18,5 +18,6 @@ app.set('view engine', 'ejs');
 app.get('/', restController.home);
 app.get('/about', restController.about);
 app.get('/restaurants', restController.index);
+app.get('/restaurants/:restId', restController.show);
 
 app.listen(env.port, () => console.log(`Up and running on port ${env.port}`));
