@@ -8,7 +8,7 @@ const app = express();
 const env = require('./config/environment');
 const restController = require('./controllers/restController');
 
-mongoose.connect(env.dbUri);
+mongoose.connect(env.dbUri, { useNewUrlParser: true });
 app.use(express.static('public'));
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ extended: true }));

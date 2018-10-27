@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const env = require('../config/environment');
 const Restaurant = require('../models/restaurant');
 
-mongoose.connect(env.dbUri);
+mongoose.connect(env.dbUri, { useNewUrlParser: true });
 
 const restaurantsData = [
   { name: 'Franco Manca',
