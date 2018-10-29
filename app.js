@@ -10,6 +10,7 @@ const auth = require('./lib/auth');
 const env = require('./config/environment');
 const restController = require('./controllers/restController');
 const authController = require('./controllers/authController');
+const secureRoute = require('./lib/secureRoute');
 
 mongoose.connect(env.dbUri, { useNewUrlParser: true });
 app.use(methodOverride('_method'));
@@ -23,18 +24,18 @@ app.use('*', auth.checkAuthStatus);
 app.get('/', restController.home);
 app.get('/about', restController.about);
 app.get('/restaurants', restController.index);
-app.post('/restaurants', restController.create);
-app.get('/restaurants/new', restController.new);
-app.put('/restaurants/:restId', restController.update);
+app.post('/restaurants', secureRoute, restController.create);
+app.get('/restaurants/new', secureRoute, restController.new);
+app.put('/restaurants/:restId', secureRoute, restController.update);
 app.get('/restaurants/:restId', restController.show);
-app.delete('/restaurants/:restId', restController.delete);
-app.get('/restaurants/:restId/edit', restController.edit);
+app.delete('/restaurants/:restId', secureRoute, restController.delete);
+app.get('/restaurants/:restId/edit', secureRoute, restController.edit);
 
 app.get('/register', authController.registerForm);
 app.post('/register', authController.registerUser);
 app.get('/login', authController.loginForm);
 app.post('/login', authController.loginUser);
 app.get('/logout', authController.logout);
-app.get('/profile', authController.profile);
+app.get('/profile', secureRoute, authController.profile);
 
 app.listen(env.port, () => console.log(`Up and running on port ${env.port}`));
