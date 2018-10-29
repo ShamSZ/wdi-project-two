@@ -14,4 +14,17 @@
     <button>Delete</button>
     </form></span>
   <% } %>
+  <% reviews.forEach(review => { %>
+    <span><strong><%= review.username %></strong></span>
+    <p><%= review.comment %></p>
+    <p><%= '⭐️'.repeat(review.rating) %></p>
+  <% }) %>
+  <% if(locals.isLoggedIn) { %>
+    <form action="/restaurants/<%= _id %>/reviews" method="post">
+      <input name="username" value="<%= locals.currentUser.username %>" hidden="true"/>
+      <input name="rating" type="number" min="1" max="5"/>
+      <textarea name="comment"></textarea>
+      <button>Submit review</button>
+    </form>
+  <% } %>
 </div>

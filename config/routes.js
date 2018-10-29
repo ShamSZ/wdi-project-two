@@ -1,5 +1,7 @@
 const authController = require('../controllers/authController');
 const restController = require('../controllers/restController');
+const reviewController = require('../controllers/reviewController');
+
 const secureRoute = require('../lib/secureRoute');
 const auth = require('../lib/auth');
 const router = require('express').Router();
@@ -7,6 +9,10 @@ const router = require('express').Router();
 router.use('*', auth.checkAuthStatus);
 router.get('/', restController.home);
 router.get('/about', restController.about);
+
+
+router.post('/restaurants/:restId/reviews', reviewController.create);
+
 
 router.route('/restaurants')
   .get(restController.index)

@@ -7,7 +7,12 @@ const restaurantSchema = mongoose.Schema({
   description: String,
   cuisine: String,
   image: String,
-  address: String
+  address: String,
+  reviews: [{
+    username: { type: String, required: true },
+    comment: String,
+    rating: { type: Number, min: 1, max: 5 }
+  }]
 });
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);
