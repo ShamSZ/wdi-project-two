@@ -4,6 +4,7 @@
     <span><a href="/about">About</a></span>
     <span><a href="/restaurants">Restaurants</a></span>
     <% if(locals.isLoggedIn) { %>
+      <span><a href="/profile"><img height="30px" src="<%= locals.currentUser.profilePic %>" alt="profile picture"><%= locals.currentUser.username %></a></span>
       <span><a href="/logout">Log out</a></span>
     <% } else { %>
       <span><a href="/login">Log in</a></span>

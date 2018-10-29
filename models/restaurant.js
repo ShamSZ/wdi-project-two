@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const restaurantSchema = mongoose.Schema({
   name: String,
   rating: Number,
-  price: Number,
+  price: { type: Number, min: 1, max: 4 },
   description: String,
   cuisine: String,
   image: String,

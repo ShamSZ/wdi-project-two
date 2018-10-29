@@ -1,11 +1,11 @@
 <h2>Add a new Restaurant</h2>
 <form action="/restaurants" method="post">
   <input name="name" placeholder="Name">
-  <input name="rating" type="number" hidden="true">
-  <input name="price" type="number" placeholder="Price">
-  <input name="description" placeholder="Description">
-  <input name="cuisine" placeholder="Cuisine">
-  <input name="image" placeholder="Image URL">
   <input name="address" placeholder="Address">
-  <button>Add Restaurant</button>
+  <input name="description" placeholder="Description">
+  <input name="price" type="number" min="1" max="5" placeholder="Price">
+  <input name="cuisine" placeholder="Cuisine">
+  <input name="rating" type="number" min="1" max="5" hidden="true">
+  <input name="image" placeholder="Image URL">
+  <button>Add</button>
 </form>

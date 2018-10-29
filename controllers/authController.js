@@ -32,10 +32,15 @@ const logout = (req, res) => {
   req.session.regenerate(() => res.redirect('/'));
 };
 
+const profilePage = (req, res) => {
+  res.render('pages/profile');
+};
+
 module.exports = {
   registerForm: registerUserForm,
   registerUser: registerUser,
   loginForm: loginUserForm,
   loginUser: loginUser,
-  logout: logout
+  logout: logout,
+  profile: profilePage
 };

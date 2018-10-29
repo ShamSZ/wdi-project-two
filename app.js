@@ -35,6 +35,6 @@ app.post('/register', authController.registerUser);
 app.get('/login', authController.loginForm);
 app.post('/login', authController.loginUser);
 app.get('/logout', authController.logout);
-
+app.get('/profile', authController.profile);
 
 app.listen(env.port, () => console.log(`Up and running on port ${env.port}`));
