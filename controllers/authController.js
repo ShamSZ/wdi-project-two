@@ -12,7 +12,25 @@ const registerUser = (req, res) => {
   });
 };
 
+const loginUserForm = (req, res) => {
+  res.render('auth/login');
+};
+
+const loginUser = (req, res) => {
+  User.findOne({ email: req.body.email}).then( user => {
+    if(!user){
+      res.redirect('/register');
+    } else {
+      console.log('Logging user in');
+      req.session.userId = user._id;
+      res.redirect('/');
+    }
+  });
+};
+
 module.exports = {
   registerForm: registerUserForm,
-  registerUser: registerUser
+  registerUser: registerUser,
+  loginForm: loginUserForm,
+  loginUser: loginUser
 };
