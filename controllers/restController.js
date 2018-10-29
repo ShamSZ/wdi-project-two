@@ -26,11 +26,25 @@ const createRest = (req, res) => {
   });
 };
 
+const editRest = (req, res) => {
+  Restaurant.findById(req.params.restId).then(restaurant => {
+    res.render('restaurants/edit', restaurant);
+  });
+};
+
+const updateRest = (req, res) => {
+  Restaurant.findByIdAndUpdate(req.params.restId, req.body).then(restaurant => {
+    res.redirect(`/restaurants/${restaurant._id}`);
+  });
+};
+
 module.exports = {
   home: home,
   about: about,
   index: indexRest,
   show: showRest,
   new: newRest,
-  create: createRest
+  create: createRest,
+  edit: editRest,
+  update: updateRest
 };

@@ -1,0 +1,11 @@
+<h2>Edit this Restaurant</h2>
+<form action="/restaurants/<%= _id %>?_method=PUT" method="post">
+  <input name="name" value="<%= name %>" placeholder="Name">
+  <input name="rating" type="number" value="<%= rating %>" hidden="true">
+  <input name="price" type="number" value="<%= price %>"placeholder="Price">
+  <input name="description" value="<%= description %>" placeholder="Description">
+  <input name="cuisine" value="<%= cuisine %>" placeholder="Cuisine">
+  <input name="image" value="<%= image %>" placeholder="Image URL">
+  <input name="address" value="<%= address %>" placeholder="Address">
+  <button>Edit Restaurant</button>
+</form>
