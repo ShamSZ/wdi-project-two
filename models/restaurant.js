@@ -10,6 +10,4 @@ const restaurantSchema = mongoose.Schema({
   address: String
 });
 
-const restaurantModel = mongoose.model('Restaurant', restaurantSchema);
-
-module.exports = restaurantModel;
+module.exports = mongoose.model('Restaurant', restaurantSchema);

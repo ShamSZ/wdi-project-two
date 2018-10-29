@@ -7,6 +7,7 @@ const app = express();
 
 const env = require('./config/environment');
 const restController = require('./controllers/restController');
+const authController = require('./controllers/authController');
 
 mongoose.connect(env.dbUri, { useNewUrlParser: true });
 app.use(methodOverride('_method'));
@@ -24,9 +25,7 @@ app.get('/restaurants/new', restController.new);
 app.put('/restaurants/:restId', restController.update);
 app.get('/restaurants/:restId', restController.show);
 app.get('/restaurants/:restId/edit', restController.edit);
-
-// need to create edit & update routes
-// need to create delete route
+app.delete('/restaurants/:restId', restController.delete);
 
 // authentication - login/register routes
 // models for user

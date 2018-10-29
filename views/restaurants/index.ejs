@@ -1,5 +1,7 @@
 <h2>Restaurants</h2>
 <p>This is where all the restaurants will be shown</p>
+<p>Currently <%= restaurants.length %> restaurants available</p>
+<span><a href="/restaurants/new">New Restaurant</a></span>
 <% restaurants.forEach(restaurant => { %>
   <a href="/restaurants/<%= restaurant._id %>">
   <h3><%= restaurant.name %></h3>

@@ -8,4 +8,8 @@
   <span>Rating: <%= '⭐️'.repeat(rating) %></span>
   <p><%= description %></p>
   <p><%= address %></p>
+  <span><a href="/restaurants/<%= _id %>/edit">Edit</a></span>
+  <span><form action="/restaurants/<%= _id %>?_method=DELETE" method="post">
+    <button>Delete</button>
+  </form></span>
 </div>

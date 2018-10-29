@@ -38,6 +38,13 @@ const updateRest = (req, res) => {
   });
 };
 
+const deleteRest = (req, res) => {
+  Restaurant.findByIdAndDelete(req.params.restId).then((restaurant) => {
+    console.log('Deleted restaurant', restaurant);
+    res.redirect('/restaurants');
+  });
+};
+
 module.exports = {
   home: home,
   about: about,
@@ -46,5 +53,6 @@ module.exports = {
   new: newRest,
   create: createRest,
   edit: editRest,
-  update: updateRest
+  update: updateRest,
+  delete: deleteRest
 };
