@@ -24,10 +24,13 @@ app.post('/restaurants', restController.create);
 app.get('/restaurants/new', restController.new);
 app.put('/restaurants/:restId', restController.update);
 app.get('/restaurants/:restId', restController.show);
-app.get('/restaurants/:restId/edit', restController.edit);
 app.delete('/restaurants/:restId', restController.delete);
+app.get('/restaurants/:restId/edit', restController.edit);
 
 // authentication - login/register routes
+app.get('/register', authController.registerForm);
+app.post('/register', authController.registerUser);
+
 // models for user
 // login/register forms/pages
 app.listen(env.port, () => console.log(`Up and running on port ${env.port}`));
