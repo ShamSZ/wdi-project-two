@@ -30,10 +30,11 @@ app.get('/restaurants/:restId', restController.show);
 app.delete('/restaurants/:restId', restController.delete);
 app.get('/restaurants/:restId/edit', restController.edit);
 
-// authentication - login/register routes
 app.get('/register', authController.registerForm);
 app.post('/register', authController.registerUser);
 app.get('/login', authController.loginForm);
 app.post('/login', authController.loginUser);
+app.get('/logout', authController.logout);
+
 
 app.listen(env.port, () => console.log(`Up and running on port ${env.port}`));

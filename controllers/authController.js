@@ -28,9 +28,14 @@ const loginUser = (req, res) => {
   });
 };
 
+const logout = (req, res) => {
+  req.session.regenerate(() => res.redirect('/'));
+};
+
 module.exports = {
   registerForm: registerUserForm,
   registerUser: registerUser,
   loginForm: loginUserForm,
-  loginUser: loginUser
+  loginUser: loginUser,
+  logout: logout
 };
