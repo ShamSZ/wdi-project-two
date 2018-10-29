@@ -8,6 +8,15 @@ const createReview = (req, res) => {
   });
 };
 
+const deleteReview = (req, res) => {
+  Restaurant.findById(req.params.restId).then(restaurant => {
+    restaurant.reviews.id(req.params.reviewId).remove();
+    console.log('Review deleted', req.params);
+    restaurant.save().then(() => res.redirect(`/restaurants/${req.params.restId}`));
+  });
+};
+
 module.exports = {
-  create: createReview
+  create: createReview,
+  delete: deleteReview
 };

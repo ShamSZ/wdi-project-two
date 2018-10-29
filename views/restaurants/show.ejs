@@ -18,7 +18,13 @@
     <span><strong><%= review.username %></strong></span>
     <p><%= review.comment %></p>
     <p><%= '⭐️'.repeat(review.rating) %></p>
+
+    <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
+      <button>Delete Comment</button>
+    </form>
   <% }) %>
+
+
   <% if(locals.isLoggedIn) { %>
     <form action="/restaurants/<%= _id %>/reviews" method="post">
       <input name="username" value="<%= locals.currentUser.username %>" hidden="true"/>

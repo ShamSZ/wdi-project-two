@@ -12,6 +12,7 @@ router.get('/about', restController.about);
 
 
 router.post('/restaurants/:restId/reviews', reviewController.create);
+router.delete('/restaurants/:restId/reviews/:reviewId', reviewController.delete);
 
 
 router.route('/restaurants')
