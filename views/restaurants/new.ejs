@@ -1,11 +1,16 @@
 <h2>Add a new Restaurant</h2>
 <form action="/restaurants" method="post">
-  <input name="name" placeholder="Name">
-  <input name="address" placeholder="Address">
-  <input name="description" placeholder="Description">
-  <input name="price" type="number" min="1" max="5" placeholder="Price">
-  <input name="cuisine" placeholder="Cuisine">
-  <input name="rating" type="number" min="1" max="5" hidden="true">
-  <input name="image" placeholder="Image URL">
+  <input name="restAuthor" value="<%= locals.currentUser._id %>" hidden>
+  <input required name="name" placeholder="Name">
+  <input required name="address" placeholder="Address">
+  <input required name="description" placeholder="Description">
+  <select name="price" type="number">
+    <option value="4">💰💰💰💰</option>
+    <option value="3">💰💰💰</option>
+    <option value="2">💰💰</option>
+    <option value="1">💰</option>
+  </select>
+  <input required name="cuisine" placeholder="Cuisine">
+  <input required name="image" placeholder="Image URL">
   <button>Add</button>
 </form>

@@ -1,9 +1,9 @@
 <h2>Register</h2>
 <form action="/register" method="post">
-  <input name="email" placeholder="Your email addess">
-  <input name="username" placeholder="Your name">
-  <input name="profilePic" value="https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png" hidden="true">
-  <input name="password" type="password" placeholder="Create a password">
-  <%# <input name="password" type="password" placeholder="Confirm password"> %>
+  <input required name="email" placeholder="Your email addess">
+  <input required name="username" placeholder="Your name">
+  <input name="profilePic" value="https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png" hidden>
+  <input required name="password" type="password" placeholder="Create a password">
+  <input name="password" type="password" placeholder="Confirm password" hidden>
   <button>Register</button>
 </form>

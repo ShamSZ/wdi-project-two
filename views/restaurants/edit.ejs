@@ -1,8 +1,12 @@
 <h2>Edit this Restaurant</h2>
 <form action="/restaurants/<%= _id %>?_method=PUT" method="post">
   <input name="name" value="<%= name %>" placeholder="Name">
-  <input name="rating" type="number" value="<%= rating %>" hidden="true">
-  <input name="price" type="number" value="<%= price %>"placeholder="Price">
+  <select name="price" type="number">
+    <option value="4">💰💰💰💰</option>
+    <option value="3">💰💰💰</option>
+    <option value="2">💰💰</option>
+    <option value="1">💰</option>
+  </select>
   <input name="description" value="<%= description %>" placeholder="Description">
   <input name="cuisine" value="<%= cuisine %>" placeholder="Cuisine">
   <input name="image" value="<%= image %>" placeholder="Image URL">

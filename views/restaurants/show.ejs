@@ -3,6 +3,7 @@
 </div>
 <div>
   <h2><%= name %></h2>
+  <p>Added by: <%= restAuthor.username %></p>
   <span>Price: <%= '💰'.repeat(price) %></span>
   <span><%= cuisine %></span>
   <span>Rating:
@@ -31,7 +32,7 @@
     <a href="/profile">
       <p>
         <img height="30px" src="<%= locals.currentUser.profilePic %>" alt="profile picture">
-        <strong><%= review.username %></strong>
+        <strong><%= review.reviewAuthor.username %></strong>
       </p>
     </a>
     <span><%= review.createdAt %></span>
@@ -48,9 +49,9 @@
 
   <% if(locals.isLoggedIn) { %>
     <form action="/restaurants/<%= _id %>/reviews" method="post">
-      <input name="username" value="<%= locals.currentUser.username %>" hidden="true"/>
+      <input name="reviewAuthor" value="<%= locals.currentUser._id %>" hidden>
       <input name="createdAt" type="datetime" hidden="true" value="<%= (new Date).toLocaleString('en',
-      { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric'}) %>"/>
+      { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric'}) %>">
       <textarea name="comment"></textarea>
       <select name="rating" type="number" min="1" max="5">
         <option value="5">⭐️⭐️⭐️⭐️⭐️</option>

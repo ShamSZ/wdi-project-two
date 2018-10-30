@@ -7,8 +7,9 @@ const restaurantSchema = mongoose.Schema({
   cuisine: String,
   image: String,
   address: String,
+  restAuthor: { type: mongoose.Schema.ObjectId, ref: 'User'},
   reviews: [{
-    username: { type: String, required: true },
+    reviewAuthor: { type: mongoose.Schema.ObjectId, ref: 'User'},
     comment: String,
     rating: Number,
     createdAt: { type: String }

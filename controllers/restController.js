@@ -12,11 +12,11 @@ const indexRest = (req, res) => {
 };
 
 const showRest = (req, res) => {
-  Restaurant.findById(req.params.restId).then(restaurant => {
-    console.log(restaurant);
-    console.log('--->', restaurant.averageRating);
-    res.render('restaurants/show', restaurant);
-  });
+  Restaurant.findById(req.params.restId)
+    .populate('restAuthor reviews.reviewAuthor')
+    .then(restaurant => {
+      res.render('restaurants/show', restaurant);
+    });
 };
 
 const newRest = (req, res) => {
@@ -24,29 +24,33 @@ const newRest = (req, res) => {
 };
 
 const createRest = (req, res) => {
-  Restaurant.create(req.body).then(restaurant => {
-    console.log('Created a new Restaurant', restaurant);
-    res.redirect(`/restaurants/${restaurant._id}`);
-  });
+  Restaurant.create(req.body)
+    .then(restaurant => {
+      console.log('Created a new Restaurant', restaurant);
+      res.redirect(`/restaurants/${restaurant._id}`);
+    });
 };
 
 const editRest = (req, res) => {
-  Restaurant.findById(req.params.restId).then(restaurant => {
-    res.render('restaurants/edit', restaurant);
-  });
+  Restaurant.findById(req.params.restId)
+    .then(restaurant => {
+      res.render('restaurants/edit', restaurant);
+    });
 };
 
 const updateRest = (req, res) => {
-  Restaurant.findByIdAndUpdate(req.params.restId, req.body).then(restaurant => {
-    res.redirect(`/restaurants/${restaurant._id}`);
-  });
+  Restaurant.findByIdAndUpdate(req.params.restId, req.body)
+    .then(restaurant => {
+      res.redirect(`/restaurants/${restaurant._id}`);
+    });
 };
 
 const deleteRest = (req, res) => {
-  Restaurant.findByIdAndDelete(req.params.restId).then((restaurant) => {
-    console.log('Deleted restaurant', restaurant);
-    res.redirect('/restaurants');
-  });
+  Restaurant.findByIdAndDelete(req.params.restId)
+    .then((restaurant) => {
+      console.log('Deleted restaurant', restaurant);
+      res.redirect('/restaurants');
+    });
 };
 
 module.exports = {
