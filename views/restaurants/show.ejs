@@ -29,7 +29,7 @@
 
   <% reviews.forEach(review => { %>
     *******************************************
-    <a href="/profile">
+    <a href="/users/<%= review.reviewAuthor._id %>">
       <p>
         <img height="30px" src="<%= locals.currentUser.profilePic %>" alt="profile picture">
         <strong><%= review.reviewAuthor.username %></strong>

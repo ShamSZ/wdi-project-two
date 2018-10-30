@@ -1,6 +1,7 @@
 const authController = require('../controllers/authController');
 const restController = require('../controllers/restController');
 const reviewController = require('../controllers/reviewController');
+const userController = require('../controllers/userController');
 
 const secureRoute = require('../lib/secureRoute');
 const auth = require('../lib/auth');
@@ -43,5 +44,8 @@ router.route('/logout')
 
 router.route('/profile')
   .get(secureRoute, authController.profile);
+
+router.route('/users/:userId')
+  .get(userController.show);
 
 module.exports = router;
