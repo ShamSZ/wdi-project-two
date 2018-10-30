@@ -3,7 +3,7 @@
 </div>
 <div>
   <h2><%= name %></h2>
-  <p>Added by: <%= restAuthor.username %></p>
+  <p>Added by: <a href="/users/<%= restAuthor._id %>"><%= restAuthor.username %></a></p>
   <span>Price: <%= '💰'.repeat(price) %></span>
   <span><%= cuisine %></span>
   <span>Rating:
@@ -18,7 +18,7 @@
 
 
 
-  <% if(locals.isLoggedIn) { %>
+  <% if(locals.isLoggedIn && (locals.currentUser.username === restAuthor.username)) { %>
     <span><a href="/restaurants/<%= _id %>/edit">Edit</a></span>
     <span><form action="/restaurants/<%= _id %>?_method=DELETE" method="post">
     <button>Delete Restaurant</button>
@@ -28,17 +28,16 @@
 
 
   <% reviews.forEach(review => { %>
-    *******************************************
     <a href="/users/<%= review.reviewAuthor._id %>">
       <p>
-        <img height="30px" src="<%= locals.currentUser.profilePic %>" alt="profile picture">
+        <img height="30px" src="<%= review.reviewAuthor.profilePic %>" alt="profile picture">
         <strong><%= review.reviewAuthor.username %></strong>
       </p>
     </a>
     <span><%= review.createdAt %></span>
     <p><%= review.comment %></p>
     <p><%= '⭐️'.repeat(review.rating) %></p>
-    <% if(locals.isLoggedIn) { %>
+    <% if(locals.isLoggedIn && (locals.currentUser.username === review.reviewAuthor.username)) { %>
       <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
         <button>Delete Review</button>
       </form>

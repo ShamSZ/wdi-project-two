@@ -18,7 +18,7 @@ const loginUserForm = (req, res) => {
 const loginUser = (req, res) => {
   User.findOne({ email: req.body.email}).then( user => {
     if(!user){
-      res.redirect('/register');
+      res.render('auth/failedLogin');
     } else {
       if (req.body.password === user.password){
         console.log('Correct password. Logging user in...');
@@ -35,15 +35,10 @@ const logout = (req, res) => {
   req.session.regenerate(() => res.redirect('/'));
 };
 
-const profilePage = (req, res) => {
-  res.render('pages/profile');
-};
-
 module.exports = {
   registerForm: registerUserForm,
   registerUser: registerUser,
   loginForm: loginUserForm,
   loginUser: loginUser,
-  logout: logout,
-  profile: profilePage
+  logout: logout
 };

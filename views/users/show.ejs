@@ -1,5 +1,17 @@
 <div>
-  <h2><%= username %>s page</h2>
+  <div>
+  <% if(locals.isLoggedIn && locals.currentUser.username === username){ %>
+    <h2>This is your profile page</h2>
+    <img height="200px" src="<%= locals.currentUser.profilePic %>" alt="profile picture">
+  </div>
+    <div>
+      <p>Your email:</p>
+      <%= locals.currentUser.email %>
+    </div>
+  <% } else { %>
+    <h2><%= username %>'s profile</h2>
+  <% } %>
+  <p>These are all the restaurants added by <%= username %>:</p>
 <% addedRestaurants.forEach(restaurant => { %>
   <div>
     <a href="/restaurants/<%= restaurant._id %>">

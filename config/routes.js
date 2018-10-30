@@ -42,9 +42,6 @@ router.route('/login')
 router.route('/logout')
   .get(authController.logout);
 
-router.route('/profile')
-  .get(secureRoute, authController.profile);
-
 router.route('/users/:userId')
   .get(userController.show);
 
