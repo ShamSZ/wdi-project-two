@@ -20,9 +20,13 @@ const loginUser = (req, res) => {
     if(!user){
       res.redirect('/register');
     } else {
-      console.log('Logging user in');
-      req.session.userId = user._id;
-      res.redirect('/');
+      if (req.body.password === user.password){
+        console.log('Correct password. Logging user in...');
+        req.session.userId = user._id;
+        res.redirect('/');
+      } else {
+        res.render('auth/failedLogin');
+      }
     }
   });
 };
