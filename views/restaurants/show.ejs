@@ -18,10 +18,11 @@
     <span><strong><%= review.username %></strong></span>
     <p><%= review.comment %></p>
     <p><%= '⭐️'.repeat(review.rating) %></p>
-
-    <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
-      <button>Delete Comment</button>
-    </form>
+    <% if(locals.isLoggedIn) { %>
+      <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
+        <button>Delete Comment</button>
+      </form>
+    <% } %>
   <% }) %>
 
 
@@ -32,5 +33,7 @@
       <textarea name="comment"></textarea>
       <button>Submit review</button>
     </form>
+  <% } else { %>
+    <p><a href="/login">Log in</a> to add a review</p>
   <% } %>
 </div>
