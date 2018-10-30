@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const restaurantSchema = mongoose.Schema({
   name: String,
-  rating: Number,
   price: { type: Number, min: 1, max: 4 },
   description: String,
   cuisine: String,
@@ -11,8 +10,24 @@ const restaurantSchema = mongoose.Schema({
   reviews: [{
     username: { type: String, required: true },
     comment: String,
-    rating: { type: Number, min: 1, max: 5 }
+    rating: Number,
+    createdAt: { type: String }
   }]
 });
+
+restaurantSchema.virtual('averageRating')
+  .get(function() {
+    const avgRating = this.reviews.reduce((total, review) => total + review.rating, 0) / this.reviews.length;
+    if (this.reviews.length > 0){
+      return Math.round(avgRating);
+    } else {
+      return 'None';
+    }
+  });
+
+restaurantSchema.set('toJSON', {
+  virtuals: true
+});
+
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);

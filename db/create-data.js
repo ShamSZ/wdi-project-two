@@ -6,7 +6,6 @@ mongoose.connect(env.dbUri, { useNewUrlParser: true });
 
 const restaurantsData = [
   { name: 'Franco Manca',
-    rating: 5,
     price: 1,
     description: 'Sourdough pizza',
     cuisine: 'Pizza',
@@ -14,7 +13,6 @@ const restaurantsData = [
     address: '10 Widmore Rd, Bromley BR1 1RY'
   },
   { name: 'McDonalds',
-    rating: 3,
     price: 1,
     description: 'Classic, long-running fast-food chain known for its burgers, fries & shakes.',
     cuisine: 'Fast Food',
@@ -22,7 +20,6 @@ const restaurantsData = [
     address: 'High St, Bromley BR1 1DN'
   },
   { name: 'Cafe Rouge',
-    rating: 4,
     price: 2,
     description: 'Chain bistro for French classics from croque-monsieurs to mussels in a retro Parisian setting.',
     cuisine: 'French',

@@ -1,36 +1,64 @@
 <div class="">
   <img width="300px" height="400px" src="<%= image %>"/>
 </div>
-<div class="">
+<div>
   <h2><%= name %></h2>
   <span>Price: <%= '💰'.repeat(price) %></span>
   <span><%= cuisine %></span>
-  <span>Rating: <%= '⭐️'.repeat(rating) %></span>
+  <span>Rating:
+    <% if(averageRating === 'None'){ %>
+      Not reviewed yet
+    <% } else { %>
+      <%= '⭐️'.repeat(averageRating) %>
+    <% } %>
+  </span>
   <p><%= description %></p>
   <p><%= address %></p>
+
+
+
   <% if(locals.isLoggedIn) { %>
     <span><a href="/restaurants/<%= _id %>/edit">Edit</a></span>
     <span><form action="/restaurants/<%= _id %>?_method=DELETE" method="post">
-    <button>Delete</button>
+    <button>Delete Restaurant</button>
     </form></span>
   <% } %>
+
+
+
   <% reviews.forEach(review => { %>
-    <span><strong><%= review.username %></strong></span>
+    *******************************************
+    <a href="/profile">
+      <p>
+        <img height="30px" src="<%= locals.currentUser.profilePic %>" alt="profile picture">
+        <strong><%= review.username %></strong>
+      </p>
+    </a>
+    <span><%= review.createdAt %></span>
     <p><%= review.comment %></p>
     <p><%= '⭐️'.repeat(review.rating) %></p>
     <% if(locals.isLoggedIn) { %>
       <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
-        <button>Delete Comment</button>
+        <button>Delete Review</button>
       </form>
     <% } %>
   <% }) %>
 
 
+
   <% if(locals.isLoggedIn) { %>
     <form action="/restaurants/<%= _id %>/reviews" method="post">
       <input name="username" value="<%= locals.currentUser.username %>" hidden="true"/>
-      <input name="rating" type="number" min="1" max="5"/>
+      <input name="createdAt" type="datetime" hidden="true" value="<%= (new Date).toLocaleString('en',
+      { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric'}) %>"/>
       <textarea name="comment"></textarea>
+      <select name="rating" type="number" min="1" max="5">
+        <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+        <option value="4">⭐️⭐️⭐️⭐️</option>
+        <option value="3">⭐️⭐️⭐️</option>
+        <option value="2">⭐️⭐️</option>
+        <option value="1">⭐️</option>
+      </select>
       <button>Submit review</button>
     </form>
   <% } else { %>
