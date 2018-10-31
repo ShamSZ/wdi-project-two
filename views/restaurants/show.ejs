@@ -19,9 +19,9 @@
 
 
   <% if(locals.isLoggedIn && (locals.currentUser.username === restAuthor.username)) { %>
-    <span><a href="/restaurants/<%= _id %>/edit">Edit</a></span>
+    <span><a class="button" href="/restaurants/<%= _id %>/edit">Edit</a></span>
     <span><form action="/restaurants/<%= _id %>?_method=DELETE" method="post">
-    <button>Delete Restaurant</button>
+    <button class="button">Delete Restaurant</button>
     </form></span>
   <% } %>
 
@@ -39,7 +39,7 @@
     <p><%= '⭐️'.repeat(review.rating) %></p>
     <% if(locals.isLoggedIn && (locals.currentUser.username === review.reviewAuthor.username)) { %>
       <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
-        <button>Delete Review</button>
+        <button>X</button>
       </form>
     <% } %>
   <% }) %>
@@ -59,7 +59,7 @@
         <option value="2">⭐️⭐️</option>
         <option value="1">⭐️</option>
       </select>
-      <button>Submit review</button>
+      <button class="button">Submit review</button>
     </form>
   <% } else { %>
     <p><a href="/login">Log in</a> to add a review</p>

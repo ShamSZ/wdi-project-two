@@ -2,7 +2,7 @@
 <p>This is where all the restaurants will be shown</p>
 <p>Currently <%= restaurants.length %> restaurants available</p>
 <% if(locals.isLoggedIn) { %>
-  <span><a href="/restaurants/new">New Restaurant</a></span>
+  <span><a class="button" href="/restaurants/new">New Restaurant</a></span>
 <% } else { %>
   <p>Log in to add new restaurants</p>
 <% } %>
