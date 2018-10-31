@@ -9,9 +9,19 @@
 }
 
 h2.title {
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 footer {
-  margin-top: 20px;
+  margin-top: 15px;
+}
+
+section.restaurant-grid {
+  margin-top: 10px;
+}
+
+div.restaurant-block {
+  background-color: lightblue;
+  margin-top: 5px;
+  color: black;
 }
