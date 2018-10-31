@@ -1,9 +1,57 @@
-<h2>Register</h2>
-<form action="/register" method="post">
-  <input required name="email" placeholder="Your email addess">
-  <input required name="username" placeholder="Your name">
-  <input name="profilePic" value="https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png" hidden>
-  <input required name="password" type="password" placeholder="Create a password">
-  <input name="password" type="password" placeholder="Confirm password" hidden>
-  <button>Register</button>
-</form>
+<div class="field has-text-centered">
+  <h2 class="title is-4">Register</h2>
+</div>
+
+<div class="columns is-centered">
+  <form class="column is-4" action="/register" method="post">
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control has-icons-left">
+        <input class="input" type="text" required name="username" placeholder="Your name">
+        <input class="input is-hidden" name="profilePic" value="https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control has-icons-left">
+        <input class="input" type="email" required name="email" placeholder="Your email addess">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" name="password" type="password" required="true" placeholder="Create password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </div>
+    </div>
+
+    <%# <div class="field">
+      <label class="label">Confirm Password</label>
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" name="password" type="password" required="true" placeholder="Confirm password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </div>
+    </div> %>
+
+    <div class="field">
+      <div class="control">
+        <button class="button is-link">Register</button>
+      </div>
+    </div>
+    <div class="field">
+      <p>If you have already registered, why not <a href="/login">log in</a>!</p>
+    </div>
+  </form>
+</div>

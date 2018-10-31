@@ -1,13 +1,13 @@
-<div class="has-text-centered">
+<div class="field has-text-centered">
   <h2 class="title is-4">Log in</h2>
 </div>
 
 <div class="columns is-centered">
-  <form action="/login" method="post">
+  <form class="column is-4" action="/login" method="post">
     <div class="field">
       <label class="label">Email</label>
       <div class="control has-icons-left">
-        <input class="input" type="email" name="email" required="true" placeholder="Your email addess">
+        <input class="input" type="email" name="email" required placeholder="Your email addess">
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
         </span>
@@ -17,17 +17,18 @@
     <div class="field">
       <label class="label">Password</label>
       <div class="control has-icons-left has-icons-right">
-        <input class="input" name="password" type="password" required="true" placeholder="Enter password">
+        <input class="input" name="password" type="password" required placeholder="Enter password">
         <span class="icon is-small is-left">
           <i class="fas fa-lock"></i>
         </span>
       </div>
     </div>
-
-    <div class="control">
-      <button class="button is-link">Log in</button>
+    <div class="field">
+      <div class="control">
+        <button class="button is-link">Log in</button>
+      </div>
     </div>
-    <div class="">
+    <div class="field">
       <p>If you have not registered, why not <a href="/register">register now</a>!</p>
     </div>
   </form>

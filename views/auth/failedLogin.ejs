@@ -1,10 +1,9 @@
 <div class="has-text-centered">
   <h2 class="title is-4">Log in</h2>
-  <h2 class="subtitle is-danger">Incorrect email or password</h2>
 </div>
 
 <div class="columns is-centered">
-  <form action="/login" method="post">
+  <form class="column is-4" action="/login" method="post">
     <div class="field">
       <label class="label">Email</label>
       <div class="control has-icons-left">
@@ -24,12 +23,14 @@
         </span>
       </div>
     </div>
-
-    <div class="control">
-      <button class="button is-link">Log in</button>
+    <div class="field">
+      <div class="control">
+        <button class="button is-link">Log in</button>
+        <span class="is-pulled-right">Incorrect email or password</span>
+      </div>
     </div>
     <div class="control">
       <p>If you have not registered, why not <a href="/register">register now</a>!</p>
-  </div>
+    </div>
   </form>
 </div>
