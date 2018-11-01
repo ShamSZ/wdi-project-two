@@ -8,7 +8,7 @@
       Restaurants
       <% if(locals.isLoggedIn) { %>
         <a href="/restaurants/new">
-          <button class="button is-pulled-right title is-6"><span class="add-icon"><i class="fas fa-plus"></i></span> Restaurant</button>
+          <button class="button add-button is-pulled-right title is-6"><span class="add-icon"><i class="fas fa-plus"></i></span> Restaurant</button>
         </a>
         <% } else { %>
         <span class="is-pulled-right title is-6">Log in to add new restaurants</span>
@@ -47,9 +47,9 @@
                 <div class="column is-12 index-description">
                   <p><%= restaurant.description %></p>
                 </div>
-                <div class="column is-5 view-button has-text-centered">
+                <div class="column is-5 view-button">
                   <a class="" href="/restaurants/<%= restaurant._id %>">
-                    <button class="button is-expanded">View</button>
+                    <button class="button view-button is-expanded title is-6">View</button>
                   </a>
                 </div>
               </div>
@@ -61,9 +61,10 @@
       <% if(locals.isLoggedIn) { %>
         <article class="column is-9">
             <a href="/restaurants/new">
-            <div class="restaurant-block columns">
+            <div class="restaurant-block columns new-rest-block">
               <div class="column is-12 has-text-centered">
-                <img src="https://static1.squarespace.com/static/56e19ec5e3214084d69d4b7d/t/57d4321d29687f1a2580863f/1473524254384/PlusIcon_Small_Gray.png" alt="new restaurant image"/>
+                <%# <img src="https://static1.squarespace.com/static/56e19ec5e3214084d69d4b7d/t/57d4321d29687f1a2580863f/1473524254384/PlusIcon_Small_Gray.png" alt="new restaurant image"/> %>
+                <span class="new-rest-block"><i class="fas fa-plus"></i></span>
               </div>
             </div>
             </a>

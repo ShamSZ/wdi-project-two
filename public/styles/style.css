@@ -57,11 +57,58 @@ article .show-block {
   border-bottom: solid 1px black;
 }
 
-img.profile-pic {
-  /* max-width: 40px;
-  max-height: 40px; */
+img.profile-pic, img.profile-thumb {
   border-radius: 20px;
 }
+img.profile-thumb {
+  margin-right: 3px;
+}
+
 div.show-comment, div.show-delete-comment {
   padding-top: 0;
+}
+
+body a {
+  color: #ff3860;
+}
+
+button.delete-button:hover {
+  background-color: #ff1f4c;
+  color: white;
+}
+
+span.edit-button:hover, button.add-button:hover {
+  background-color: #4a4a4a;
+  color: white;
+}
+
+button.view-button:hover {
+  background-color: #ff3860;
+  color: white;
+}
+
+
+main .is-link.button:hover {
+  background-color: white;
+  color: #ff3860;
+  border: 1px solid #4a4a4a;
+}
+
+div.new-rest-block {
+  font-size: 70px;
+  color: #4a4a4a;
+}
+
+div.new-rest-block:hover {
+  font-size: 70px;
+  color: white;
+  background-color: #4a4a4a;
+}
+
+label.rating-star:hover {
+  color: gold;
+}
+
+label.price-pound:hover {
+  color: #62bf63;
 }
