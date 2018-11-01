@@ -1,24 +1,49 @@
-<div>
-  <div>
-  <% if(locals.isLoggedIn && locals.currentUser.username === username){ %>
-    <h2>This is your profile page</h2>
-    <img height="200px" src="<%= locals.currentUser.profilePic %>" alt="profile picture">
-  </div>
-    <div>
-      <p>Your email:</p>
-      <%= locals.currentUser.email %>
-    </div>
-  <% } else { %>
-    <h2><%= username %>'s profile</h2>
-  <% } %>
-  <p>These are all the restaurants added by <%= username %>:</p>
-<% addedRestaurants.forEach(restaurant => { %>
-  <div>
-    <a href="/restaurants/<%= restaurant._id %>">
-      <h3><%= restaurant.name %></h3>
-      <img height="100px" src="<%= restaurant.image %>" alt="restaurant image">
-    </a>
-  </div>
-<% }) %>
 
-</div>
+<section class="columns show-user is-multiline">
+  <article class="column is-12">
+    <section class="columns is-multiline">
+      <div class="column is-3 is-offset-1">
+        <img src="<%= profilePic %>" alt="profile picture">
+      </div>
+
+      <div class="column is-7 is-offset-">
+        <% if(locals.isLoggedIn && locals.currentUser.username === username){ %>
+        <h2 class="title is-4">This is your profile page
+          <a class="is-pulled-right" href="/users/<%= _id %>/edit">
+            <span class="edit-button title is-6 button">Edit details</span>
+          </a>
+        </h2>
+
+          <div>
+            <p>Username: <%= locals.currentUser.username %></p>
+            <p>Email: <%= locals.currentUser.email %></p>
+          </div>
+        <% } else { %>
+          <h2 class="title is-4"><%= username %>'s profile</h2>
+        <% } %>
+      </div>
+
+      <div class="column is-10 is-offset-1">
+        <div>
+          <h3 class="is-centered title is-5">These are all the restaurants added by <%= username %>:</h3>
+          <section class="columns is-multiline is-centered">
+            <% addedRestaurants.forEach(restaurant => { %>
+              <div class="column is-4">
+                <div>
+                  <a href="/restaurants/<%= restaurant._id %>">
+                    <img height="100px" src="<%= restaurant.image %>" alt="restaurant image">
+                    <h3 class="title is-6"><%= restaurant.name %>
+                      <span class="is-pulled-right">
+                        <%- '<i class="far fa-star"></i>'.repeat(restaurant.averageRating) %>
+                      </span>
+                    </h3>
+                  </a>
+                </div>
+              </div>
+            <% }) %>
+          </section>
+        </div>
+      </div>
+    </section>
+  </article>
+</section>

@@ -72,6 +72,10 @@ body a {
   color: #ff3860;
 }
 
+section.show-user {
+  margin-top: 1%;
+}
+
 button.delete-button:hover {
   background-color: #ff1f4c;
   color: white;
