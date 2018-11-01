@@ -49,11 +49,19 @@ label.radio {
   margin-right: 2%;
 }
 
-section.show-content article {
-  margin-top: 15px;
+.show-content article {
+  margin-top: 1%;
 }
-div.add-review {
-  margin-top: 50%;
-  margin-bottom: 50%;
-  background-color: blue;
+
+article .show-block {
+  border-bottom: solid 1px black;
+}
+
+img.profile-pic {
+  /* max-width: 40px;
+  max-height: 40px; */
+  border-radius: 20px;
+}
+div.show-comment, div.show-delete-comment {
+  padding-top: 0;
 }

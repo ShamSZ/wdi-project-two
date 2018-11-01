@@ -1,6 +1,6 @@
-<section class="columns show-content">
+<section class="columns show-content is-multiline">
   <article class="column is-10 is-offset-1">
-    <div class="restaurant-block columns">
+    <div class="show-block columns">
       <div class="column is-7">
         <img src="<%= image %>"/>
       </div>
@@ -32,11 +32,11 @@
               <p>Added by: <a href="/users/<%= restAuthor._id %>"><%= restAuthor.username %></a></p>
             </div>
 
-            <div class="column is-12 has-text-centered">
+            <div class="column is-12 has-text-centered columns">
               <% if(locals.isLoggedIn && (locals.currentUser.username === restAuthor.username)) { %>
                 <a href="/restaurants/<%= _id %>/edit"><span class="button">Edit</span></a>
                 <span><form action="/restaurants/<%= _id %>?_method=DELETE" method="post">
-                <button class="button">Delete Restaurant</button>
+                <button class="button">Delete</button>
                 </form></span>
               <% } %>
             </div>
@@ -44,45 +44,91 @@
       </div>
     </div>
   </article>
+  <article class="review column is-10 is-offset-1">
+    <section class="columns is-multiline">
 
-    <article class="review column is-10 is-offset-1">
-      <% reviews.forEach(review => { %>
-        <a href="/users/<%= review.reviewAuthor._id %>">
-          <p>
-            <img height="30px" src="<%= review.reviewAuthor.profilePic %>" alt="profile picture">
-            <strong><%= review.reviewAuthor.username %></strong>
-          </p>
-        </a>
-        <span><%= review.createdAt %></span>
-        <p><%= review.comment %></p>
-        <p><%= '⭐️'.repeat(review.rating) %></p>
-        <% if(locals.isLoggedIn && (locals.currentUser.username === review.reviewAuthor.username)) { %>
-          <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
-            <button>X</button>
-          </form>
-        <% } %>
+    <% reviews.forEach(review => { %>
+      <div class="column is-8 is-offset-2">
+        <div class="columns is-multiline">
+          <div class="column is-1">
+            <img class="profile-pic" src="<%= review.reviewAuthor.profilePic %>" alt="profile picture">
+          </div>
+          <div class="column is-8">
+            <a href="/users/<%= review.reviewAuthor._id %>">
+            <p class="title is-6"><strong><%= review.reviewAuthor.username %></strong></p>
+            </a>
+            <p class="subtitle is-7"><%= review.createdAt %></p>
+          </div>
+          <div class="column is-3 has-text-right is-vcentered">
+            <p class=""><%- '<i class="far fa-star"></i>'.repeat(review.rating) %></p>
+          </div>
+          <div class="show-comment column is-8 is-offset-1">
+            <p><%= review.comment %></p>
+          </div>
+          <div class="show-delete-comment column is-3 has-text-right">
+            <% if(locals.isLoggedIn && (locals.currentUser.username === review.reviewAuthor.username)) { %>
+              <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
+                <button class="button" >Delete</button>
+              </form>
+              <% } %>
+          </div>
+        </div>
+      </div>
       <% }) %>
-    </article>
-
-
-  <article class="add-review column is-10 is-offset-1">
+    </section>
+  </article>
+  <article class="add-review column is-8 is-offset-2">
     <% if(locals.isLoggedIn) { %>
     <form action="/restaurants/<%= _id %>/reviews" method="post">
       <input name="reviewAuthor" value="<%= locals.currentUser._id %>" hidden>
       <input name="createdAt" type="datetime" hidden="true" value="<%= (new Date).toLocaleString('en',
       { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric'}) %>">
-      <textarea name="comment"></textarea>
-      <select name="rating" type="number" min="1" max="5">
-        <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
-        <option value="4">⭐️⭐️⭐️⭐️</option>
-        <option value="3">⭐️⭐️⭐️</option>
-        <option value="2">⭐️⭐️</option>
-        <option value="1">⭐️</option>
-      </select>
-      <button class="button">Submit review</button>
+      <div class="field">
+        <label class="label">Review</label>
+        <div class="control">
+          <textarea class="textarea" name="comment" placeholder="Review"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Rating</label>
+        <div class="field is-grouped">
+
+          <div class="control is-expanded">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="rating" value="1">
+                  <%- '<i class="far fa-star"></i>'.repeat(1) %>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="rating" value="2">
+                  <%- '<i class="far fa-star"></i>'.repeat(2) %>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="rating" value="3">
+                  <%- '<i class="far fa-star"></i>'.repeat(3) %>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="rating" value="4">
+                  <%- '<i class="far fa-star"></i>'.repeat(4) %>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="rating" value="5">
+                  <%- '<i class="far fa-star"></i>'.repeat(5) %>
+                </label>
+              </div>
+          </div>
+
+          <div class="control">
+            <button class="button is-link">Submit review</button>
+          </div>
+
+        </div>
+      </div>
     </form>
     <% } else { %>
-      <p><a href="/login">Log in</a> to add a review</p>
+      <div class="has-text-centered">
+        <h3 class="title is-5"><a href="/login">Log in</a> to add a review</h3>
+      </div>
       <% } %>
   </article>
 </section>
