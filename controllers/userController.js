@@ -8,6 +8,14 @@ const showUser = (req, res) => {
     });
 };
 
+const editUser = (req, res) => {
+  User.findById(req.params.userId)
+    .then(user => {
+      res.render('users/edit', user);
+    });
+};
+
 module.exports = {
-  show: showUser
+  show: showUser,
+  edit: editUser
 };
