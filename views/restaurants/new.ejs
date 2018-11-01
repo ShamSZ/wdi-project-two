@@ -44,15 +44,24 @@
       <div class="field is-grouped">
 
         <div class="control is-expanded">
-          <div class="select">
-            <select name="price" type="number">
-              <option>Select price</option>
-              <option value="4">💰💰💰💰</option>
-              <option value="3">💰💰💰</option>
-              <option value="2">💰💰</option>
-              <option value="1">💰</option>
-            </select>
-          </div>
+            <div class="control">
+              <label class="radio">
+                <input type="radio" name="price" value="1">
+                <%- '<i class="fas fa-pound-sign"></i>'.repeat(1) %>
+              </label>
+              <label class="radio">
+                <input type="radio" name="price" value="2">
+                <%- '<i class="fas fa-pound-sign"></i>'.repeat(2) %>
+              </label>
+              <label class="radio">
+                <input type="radio" name="price" value="3">
+                <%- '<i class="fas fa-pound-sign"></i>'.repeat(3) %>
+              </label>
+              <label class="radio">
+                <input type="radio" name="price" value="4">
+                <%- '<i class="fas fa-pound-sign"></i>'.repeat(4) %>
+              </label>
+            </div>
         </div>
 
         <div class="control">

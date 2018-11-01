@@ -28,7 +28,7 @@ div.restaurant-block {
 }
 
 .restaurant-block img {
-  max-height: 400px;
+  min-height: 200px;
 }
 
 .restaurant-block .view-button {
@@ -44,4 +44,16 @@ div.restaurant-block {
 
 span.add-icon {
   margin-right: 5px;
+}
+label.radio {
+  margin-right: 2%;
+}
+
+section.show-content article {
+  margin-top: 15px;
+}
+div.add-review {
+  margin-top: 50%;
+  margin-bottom: 50%;
+  background-color: blue;
 }

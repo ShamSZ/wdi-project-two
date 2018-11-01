@@ -1,52 +1,72 @@
-<div class="">
-  <img width="300px" height="400px" src="<%= image %>"/>
-</div>
-<div>
-  <h2><%= name %></h2>
-  <p>Added by: <a href="/users/<%= restAuthor._id %>"><%= restAuthor.username %></a></p>
-  <span>Price: <%= '💰'.repeat(price) %></span>
-  <span><%= cuisine %></span>
-  <span>Rating:
-    <% if(averageRating === 'None'){ %>
-      Not reviewed yet
-    <% } else { %>
-      <%= '⭐️'.repeat(averageRating) %>
-    <% } %>
-  </span>
-  <p><%= description %></p>
-  <p><%= address %></p>
+<section class="columns show-content">
+  <article class="column is-10 is-offset-1">
+    <div class="restaurant-block columns">
+      <div class="column is-7">
+        <img src="<%= image %>"/>
+      </div>
+      <div class="column is-5">
+          <div class="columns is-multiline">
+            <div class="column is-12">
+              <div class="columns">
+                <div class="column is-6">
+                  <h2 class="title is-4"><%= name %></h2>
+                  <p class="" >Cuisine: <%= cuisine %></p>
+                </div>
+                <div class="column is-6 has-text-right">
+                  <h3 class="subtitle is-6">
+                    <% if(averageRating === 'None'){ %>
+                      Not reviewed yet
+                    <% } else { %>
+                      <%- '<i class="far fa-star"></i>'.repeat(averageRating) %>
+                    <% } %>
+                  </h3>
+                  <h3 class="subtitle is-6"><%- '<i class="fas fa-pound-sign"></i>'.repeat(price) %></h3>
+                </div>
+              </div>
+            </div>
+            <div class="column is-12 index-description">
+              <p><%= description %></p>
+            </div>
+            <div class="column is-12">
+              <p><%= address %></p>
+              <p>Added by: <a href="/users/<%= restAuthor._id %>"><%= restAuthor.username %></a></p>
+            </div>
+
+            <div class="column is-12 has-text-centered">
+              <% if(locals.isLoggedIn && (locals.currentUser.username === restAuthor.username)) { %>
+                <a href="/restaurants/<%= _id %>/edit"><span class="button">Edit</span></a>
+                <span><form action="/restaurants/<%= _id %>?_method=DELETE" method="post">
+                <button class="button">Delete Restaurant</button>
+                </form></span>
+              <% } %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </article>
+
+    <article class="review column is-10 is-offset-1">
+      <% reviews.forEach(review => { %>
+        <a href="/users/<%= review.reviewAuthor._id %>">
+          <p>
+            <img height="30px" src="<%= review.reviewAuthor.profilePic %>" alt="profile picture">
+            <strong><%= review.reviewAuthor.username %></strong>
+          </p>
+        </a>
+        <span><%= review.createdAt %></span>
+        <p><%= review.comment %></p>
+        <p><%= '⭐️'.repeat(review.rating) %></p>
+        <% if(locals.isLoggedIn && (locals.currentUser.username === review.reviewAuthor.username)) { %>
+          <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
+            <button>X</button>
+          </form>
+        <% } %>
+      <% }) %>
+    </article>
 
 
-
-  <% if(locals.isLoggedIn && (locals.currentUser.username === restAuthor.username)) { %>
-    <span><a class="button" href="/restaurants/<%= _id %>/edit">Edit</a></span>
-    <span><form action="/restaurants/<%= _id %>?_method=DELETE" method="post">
-    <button class="button">Delete Restaurant</button>
-    </form></span>
-  <% } %>
-
-
-
-  <% reviews.forEach(review => { %>
-    <a href="/users/<%= review.reviewAuthor._id %>">
-      <p>
-        <img height="30px" src="<%= review.reviewAuthor.profilePic %>" alt="profile picture">
-        <strong><%= review.reviewAuthor.username %></strong>
-      </p>
-    </a>
-    <span><%= review.createdAt %></span>
-    <p><%= review.comment %></p>
-    <p><%= '⭐️'.repeat(review.rating) %></p>
-    <% if(locals.isLoggedIn && (locals.currentUser.username === review.reviewAuthor.username)) { %>
-      <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
-        <button>X</button>
-      </form>
-    <% } %>
-  <% }) %>
-
-
-
-  <% if(locals.isLoggedIn) { %>
+  <article class="add-review column is-10 is-offset-1">
+    <% if(locals.isLoggedIn) { %>
     <form action="/restaurants/<%= _id %>/reviews" method="post">
       <input name="reviewAuthor" value="<%= locals.currentUser._id %>" hidden>
       <input name="createdAt" type="datetime" hidden="true" value="<%= (new Date).toLocaleString('en',
@@ -61,7 +81,8 @@
       </select>
       <button class="button">Submit review</button>
     </form>
-  <% } else { %>
-    <p><a href="/login">Log in</a> to add a review</p>
-  <% } %>
-</div>
+    <% } else { %>
+      <p><a href="/login">Log in</a> to add a review</p>
+      <% } %>
+  </article>
+</section>
