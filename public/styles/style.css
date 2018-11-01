@@ -21,7 +21,14 @@ section.restaurant-grid {
 }
 
 div.restaurant-block {
-  background-color: lightblue;
+  border: solid black 1px;
   margin-top: 5px;
   color: black;
+  position: relative;
+}
+
+.restaurant-block button {
+  position: absolute;
+  bottom: 15px;
+  width: 250px;
 }

@@ -6,30 +6,36 @@
   <% restaurants.forEach(restaurant => { %>
   <article class="column is-9">
       <div class="restaurant-block columns">
-        <div class="column is-4">
+        <div class="column is-7">
           <a href="/restaurants/<%= restaurant._id %>"><img src="<%= restaurant.image %>"/></a>
         </div>
         <div class="column is-5">
           <div class="columns is-multiline">
             <div class="column is-12">
-              <h3 class="title is-5"><%= restaurant.name %></h3>
-              <p class="subtitle is-6" >Cuisine: <%= restaurant.cuisine %></p>
+              <div class="columns">
+                <div class="column is-6">
+                  <h3 class="title is-5"><%= restaurant.name %></h3>
+                  <p class="" >Cuisine: <%= restaurant.cuisine %></p>
+                </div>
+                <div class="column is-6 has-text-right">
+                  <h3 class="subtitle is-6">
+                    <% if(restaurant.averageRating === 'None'){ %>
+                      Not reviewed yet
+                    <% } else { %>
+                      <%= '⭐️'.repeat(restaurant.averageRating) %>
+                    <% } %>
+                  </h3>
+                  <h3 class="subtitle is-6"><%= '£'.repeat(restaurant.price) %></h3>
+                </div>
+              </div>
             </div>
-            <div class="column is-9">
+            <div class="column is-8">
               <p><%= restaurant.description %></p>
             </div>
+            <div class="column is-12">
+              <a href="/restaurants/<%= restaurant._id %>"><button class="button">View</button></a>
+            </div>
           </div>
-        </div>
-        <div class="column is-3">
-          <p>Rating:
-            <% if(restaurant.averageRating === 'None'){ %>
-              Not reviewed yet
-            <% } else { %>
-              <%= '⭐️'.repeat(restaurant.averageRating) %>
-            <% } %>
-          </p>
-          <p>Price: <%= '💰'.repeat(restaurant.price) %></p>
-          <a href="/restaurants/<%= restaurant._id %>"><button class="button">View</button></a>
         </div>
       </div>
 
