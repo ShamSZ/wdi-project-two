@@ -34,7 +34,7 @@
                     <img src="<%= restaurant.image %>" alt="restaurant image">
                     <h3 class="title is-6"><%= restaurant.name %>
                       <span class="is-pulled-right">
-                        <%- '<i class="far fa-star"></i>'.repeat(restaurant.averageRating) %>
+                        <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(restaurant.averageRating) %>
                       </span>
                     </h3>
                   </a>
@@ -52,7 +52,7 @@
                   <a href="/restaurants/<%= restaurant._id %>">
                     <h3 class="title is-6"><%= restaurant.name %>
                       <span class="is-pulled-right">
-                        <%- '<i class="far fa-star"></i>'.repeat(restaurant.averageRating); %>
+                        <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(restaurant.averageRating); %>
                       </span>
                     </h3>
                   </a>

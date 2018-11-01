@@ -7,6 +7,14 @@
 .Site-content {
   flex: 1;
 }
+img.home-img {
+  margin-top: 5%;
+  max-height: 150px;
+  min-height: 100px;
+}
+.navbar-brand img {
+  margin-right: 5px;
+}
 
 h2.title {
   margin-top: 3%;
@@ -27,7 +35,7 @@ div.restaurant-block {
   position: relative;
 }
 
-.restaurant-block img {
+img.rest-index-image {
   min-height: 200px;
 }
 
@@ -58,7 +66,7 @@ article .show-block {
 }
 
 img.profile-pic, img.profile-thumb {
-  border-radius: 20px;
+  border-radius: 50%;
 }
 img.profile-thumb {
   margin-right: 3px;
@@ -66,6 +74,10 @@ img.profile-thumb {
 
 div.show-comment, div.show-delete-comment {
   padding-top: 0;
+}
+
+.show-delete-comment button {
+  margin-top: 25px;
 }
 
 body a {
@@ -109,8 +121,9 @@ div.new-rest-block:hover {
   background-color: #4a4a4a;
 }
 
-label.rating-star:hover {
-  color: gold;
+img.rating-star {
+  border-radius: 50%;
+  max-height: 25px;
 }
 
 label.price-pound:hover {

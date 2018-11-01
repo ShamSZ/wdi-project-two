@@ -17,7 +17,7 @@
                     <% if(averageRating === 'None'){ %>
                       Not reviewed yet
                     <% } else { %>
-                      <%- '<i class="far fa-star"></i>'.repeat(averageRating) %>
+                      <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(averageRating) %>
                     <% } %>
                   </h3>
                   <h3 class="subtitle is-6"><%- '<i class="fas fa-pound-sign"></i>'.repeat(price) %></h3>
@@ -50,27 +50,25 @@
     <% reviews.forEach(review => { %>
       <div class="column is-8 is-offset-2">
         <div class="columns is-multiline">
-          <div class="column is-1">
+          <div class="column is-2">
             <img class="profile-pic" src="<%= review.reviewAuthor.profilePic %>" alt="profile picture">
           </div>
-          <div class="column is-8">
+          <div class="column is-7">
             <a href="/users/<%= review.reviewAuthor._id %>">
             <p class="title is-6"><strong><%= review.reviewAuthor.username %></strong></p>
             </a>
             <p class="subtitle is-7"><%= review.createdAt %></p>
-          </div>
-          <div class="column is-3 has-text-right is-vcentered">
-            <p class=""><%- '<i class="far fa-star"></i>'.repeat(review.rating) %></p>
-          </div>
-          <div class="show-comment column is-8 is-offset-1">
             <p><%= review.comment %></p>
           </div>
-          <div class="show-delete-comment column is-3 has-text-right">
+          <div class="column is-3 has-text-right show-delete-comment">
+            <p class=""><%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="">'.repeat(review.rating) %></p>
             <% if(locals.isLoggedIn && (locals.currentUser.username === review.reviewAuthor.username)) { %>
               <form action="/restaurants/<%= _id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" >
                 <button class="button delete-button title is-6" >Delete</button>
               </form>
               <% } %>
+          </div>
+          <div class="show-delete-comment column is-3 has-text-right">
           </div>
         </div>
       </div>
@@ -86,7 +84,7 @@
       <div class="field">
         <label class="label">Review</label>
         <div class="control">
-          <textarea class="textarea" name="comment" placeholder="Review"></textarea>
+          <textarea class="textarea" name="comment" required placeholder="Review"></textarea>
         </div>
       </div>
       <div class="field">
@@ -95,25 +93,25 @@
 
           <div class="control is-expanded">
               <div class="control">
-                <label class="radio rating-star">
-                  <input type="radio" name="rating" value="1">
-                  <%- '<i class="far fa-star"></i>'.repeat(1) %>
+                <label class="radio">
+                  <input type="radio" name="rating" value="1" required hidden>
+                  <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(1) %>
                 </label>
-                <label class="radio rating-star">
-                  <input type="radio" name="rating" value="2">
-                  <%- '<i class="far fa-star"></i>'.repeat(2) %>
+                <label class="radio">
+                  <input type="radio" name="rating" value="2" hidden>
+                  <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(2) %>
                 </label>
-                <label class="radio rating-star">
-                  <input type="radio" name="rating" value="3">
-                  <%- '<i class="far fa-star"></i>'.repeat(3) %>
+                <label class="radio">
+                  <input type="radio" name="rating" value="3" hidden>
+                  <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(3) %>
                 </label>
-                <label class="radio rating-star">
-                  <input type="radio" name="rating" value="4">
-                  <%- '<i class="far fa-star"></i>'.repeat(4) %>
+                <label class="radio">
+                  <input type="radio" name="rating" value="4" hidden>
+                  <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(4) %>
                 </label>
-                <label class="radio rating-star">
-                  <input type="radio" name="rating" value="5">
-                  <%- '<i class="far fa-star"></i>'.repeat(5) %>
+                <label class="radio">
+                  <input type="radio" name="rating" value="5" hidden>
+                  <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(5) %>
                 </label>
               </div>
           </div>

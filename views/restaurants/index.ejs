@@ -5,7 +5,7 @@
       <span class="is-pulled-left title is-6">
         <strong><%= restaurants.length %></strong> restaurants added so far.
       </span>
-      Restaurants
+      <i class="fas fa-utensils"></i> Restaurants
       <% if(locals.isLoggedIn) { %>
         <a href="/restaurants/new">
           <button class="button add-button is-pulled-right title is-6"><span class="add-icon"><i class="fas fa-plus"></i></span> Restaurant</button>
@@ -22,7 +22,7 @@
       <article class="column is-9">
           <div class="restaurant-block columns">
             <div class="column is-7">
-              <a href="/restaurants/<%= restaurant._id %>"><img src="<%= restaurant.image %>"/></a>
+              <a href="/restaurants/<%= restaurant._id %>"><img class="rest-index-image" src="<%= restaurant.image %>"/></a>
             </div>
             <div class="column is-5">
               <div class="columns is-multiline">
@@ -36,10 +36,10 @@
                       <h3 class="subtitle is-6">
                         <% if(restaurant.averageRating === 'None'){ %>
                           Not reviewed yet
-                        <% } else { %>
-                          <%- '<i class="far fa-star"></i>'.repeat(restaurant.averageRating) %>
-                        <% } %>
                       </h3>
+                        <% } else { %>
+                          <%- '<img class="rating-star" src="/images/japanese-shuriken.png" alt="shuriken">'.repeat(restaurant.averageRating) %>
+                        <% } %>
                       <h3 class="subtitle is-6"><%- '<i class="fas fa-pound-sign"></i>'.repeat(restaurant.price) %></h3>
                     </div>
                   </div>
