@@ -16,8 +16,8 @@ footer {
   margin-top: 15px;
 }
 
-section.restaurant-grid {
-  margin-top: 10px;
+div.index-content {
+  margin-bottom: 3%;
 }
 
 div.restaurant-block {
@@ -27,8 +27,21 @@ div.restaurant-block {
   position: relative;
 }
 
-.restaurant-block button {
+.restaurant-block img {
+  max-height: 400px;
+}
+
+.restaurant-block .view-button {
   position: absolute;
   bottom: 15px;
-  width: 250px;
+}
+.index-description p {
+  margin-bottom: 20%;
+}
+.view-button button {
+  padding: 0 40%;
+}
+
+span.add-icon {
+  margin-right: 5px;
 }

@@ -1,54 +1,75 @@
-<div class="has-text-centered">
-  <h2 class="title is-4">Restaurants</h2>
-</div>
+<section class="columns is-multiline">
 
-<section class="restaurant-grid columns is-multiline is-centered">
-  <% restaurants.forEach(restaurant => { %>
-  <article class="column is-9">
-      <div class="restaurant-block columns">
-        <div class="column is-7">
-          <a href="/restaurants/<%= restaurant._id %>"><img src="<%= restaurant.image %>"/></a>
-        </div>
-        <div class="column is-5">
-          <div class="columns is-multiline">
-            <div class="column is-12">
-              <div class="columns">
-                <div class="column is-6">
-                  <h3 class="title is-5"><%= restaurant.name %></h3>
-                  <p class="" >Cuisine: <%= restaurant.cuisine %></p>
+  <div class="column is-12 has-text-centered">
+    <h2 class="title is-4">
+      <span class="is-pulled-left title is-6">
+        <strong><%= restaurants.length %></strong> restaurants added so far.
+      </span>
+      Restaurants
+      <% if(locals.isLoggedIn) { %>
+        <a href="/restaurants/new">
+          <button class="button is-pulled-right title is-6"><span class="add-icon"><i class="fas fa-plus"></i></span> Restaurant</button>
+        </a>
+        <% } else { %>
+        <span class="is-pulled-right title is-6">Log in to add new restaurants</span>
+      <% } %>
+    </h2>
+  </div>
+
+  <div class="column is-12 index-content">
+    <section class="restaurant-grid columns is-multiline is-centered">
+      <% restaurants.forEach(restaurant => { %>
+      <article class="column is-9">
+          <div class="restaurant-block columns">
+            <div class="column is-7">
+              <a href="/restaurants/<%= restaurant._id %>"><img src="<%= restaurant.image %>"/></a>
+            </div>
+            <div class="column is-5">
+              <div class="columns is-multiline">
+                <div class="column is-12">
+                  <div class="columns">
+                    <div class="column is-6">
+                      <h3 class="title is-5"><%= restaurant.name %></h3>
+                      <p class="" >Cuisine: <%= restaurant.cuisine %></p>
+                    </div>
+                    <div class="column is-6 has-text-right">
+                      <h3 class="subtitle is-6">
+                        <% if(restaurant.averageRating === 'None'){ %>
+                          Not reviewed yet
+                        <% } else { %>
+                          <%- '<i class="far fa-star"></i>'.repeat(restaurant.averageRating) %>
+                        <% } %>
+                      </h3>
+                      <h3 class="subtitle is-6"><%- '<i class="fas fa-pound-sign"></i>'.repeat(restaurant.price) %></h3>
+                    </div>
+                  </div>
                 </div>
-                <div class="column is-6 has-text-right">
-                  <h3 class="subtitle is-6">
-                    <% if(restaurant.averageRating === 'None'){ %>
-                      Not reviewed yet
-                    <% } else { %>
-                      <%= '⭐️'.repeat(restaurant.averageRating) %>
-                    <% } %>
-                  </h3>
-                  <h3 class="subtitle is-6"><%= '£'.repeat(restaurant.price) %></h3>
+                <div class="column is-12 index-description">
+                  <p><%= restaurant.description %></p>
+                </div>
+                <div class="column is-5 view-button has-text-centered">
+                  <a class="" href="/restaurants/<%= restaurant._id %>">
+                    <button class="button is-expanded">View</button>
+                  </a>
                 </div>
               </div>
             </div>
-            <div class="column is-8">
-              <p><%= restaurant.description %></p>
-            </div>
-            <div class="column is-12">
-              <a href="/restaurants/<%= restaurant._id %>"><button class="button">View</button></a>
-            </div>
           </div>
-        </div>
-      </div>
 
-  </article>
-  <% }) %>
+      </article>
+      <% }) %>
+      <% if(locals.isLoggedIn) { %>
+        <article class="column is-9">
+            <a href="/restaurants/new">
+            <div class="restaurant-block columns">
+              <div class="column is-12 has-text-centered">
+                <img src="https://static1.squarespace.com/static/56e19ec5e3214084d69d4b7d/t/57d4321d29687f1a2580863f/1473524254384/PlusIcon_Small_Gray.png" alt="new restaurant image"/>
+              </div>
+            </div>
+            </a>
+        </article>
+      <% } %>
+
+    </section>
+  </div>
 </section>
-
-<div class="">
-  <p><strong><%= restaurants.length %></strong> restaurants added so far.
-    <% if(locals.isLoggedIn) { %>
-      <a href="/restaurants/new"><button class="button is-pulled-right">New Restaurant</button></a>
-    <% } else { %>
-      <span class="is-pulled-right">Log in to add new restaurants</span>
-    <% } %>
-  </p>
-</div>
