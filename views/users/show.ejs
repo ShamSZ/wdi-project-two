@@ -13,7 +13,6 @@
             <span class="edit-button title is-6 button">Edit details</span>
           </a>
         </h2>
-
           <div>
             <p>Username: <%= locals.currentUser.username %></p>
             <p>Email: <%= locals.currentUser.email %></p>
@@ -21,6 +20,7 @@
         <% } else { %>
           <h2 class="title is-4"><%= username %>'s profile</h2>
         <% } %>
+        <p>Number of reviews: <%= addedReviews.length %></p>
       </div>
 
       <div class="column is-10 is-offset-1">
@@ -31,10 +31,28 @@
               <div class="column is-4">
                 <div>
                   <a href="/restaurants/<%= restaurant._id %>">
-                    <img height="100px" src="<%= restaurant.image %>" alt="restaurant image">
+                    <img src="<%= restaurant.image %>" alt="restaurant image">
                     <h3 class="title is-6"><%= restaurant.name %>
                       <span class="is-pulled-right">
                         <%- '<i class="far fa-star"></i>'.repeat(restaurant.averageRating) %>
+                      </span>
+                    </h3>
+                  </a>
+                </div>
+              </div>
+            <% }) %>
+          </section>
+        </div>
+        <div>
+          <h3 class="is-centered title is-5">These are all the restaurants reviewed by <%= username %>:</h3>
+          <section class="columns is-multiline is-centered">
+            <% addedReviews.forEach(restaurant => { %>
+              <div class="column is-12">
+                <div>
+                  <a href="/restaurants/<%= restaurant._id %>">
+                    <h3 class="title is-6"><%= restaurant.name %>
+                      <span class="is-pulled-right">
+                        <%- '<i class="far fa-star"></i>'.repeat(restaurant.averageRating); %>
                       </span>
                     </h3>
                   </a>

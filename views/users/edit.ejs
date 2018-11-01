@@ -6,30 +6,52 @@
   <form action="/users/<%= locals.currentUser._id %>?_method=PUT" class="column is-7" method="post">
 
     <div class="field">
-      <label class="label">Username</label>
-      <div class="control">
-        <input class="input" required name="username" placeholder="Username" value="<%= username %>">
-      </div>
-    </div>
-
-    <div class="field">
       <label class="label">Email</label>
-      <div class="control">
-        <input class="input" required name="email" value="<%= email %>" placeholder="Email">
+      <div class="control has-icons-left">
+        <input class="input" required name="email" value="<%= email %>" placeholder="Email" disabled>
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Password</label>
-      <div class="control">
-        <input class="input" type="password" required name="password" placeholder="Password">
+      <label class="label">Username</label>
+      <div class="control has-icons-left">
+        <input class="input" required name="username" placeholder="Username" value="<%= username %>">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Profile Picture</label>
-      <div class="control">
+      <div class="control has-icons-left">
         <input class="input" required name="profilePic" value="<%= profilePic %>" placeholder="Profile Picture URL">
+        <span class="icon is-small is-left">
+          <i class="fas fa-link"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Old Password</label>
+      <div class="control has-icons-left">
+        <input class="input" type="password" required name="oldPassword" placeholder="Old Password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">New Password</label>
+      <div class="control has-icons-left">
+        <input class="input" type="password" required name="password" placeholder="New Password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
       </div>
     </div>
 

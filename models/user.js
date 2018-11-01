@@ -13,4 +13,10 @@ userSchema.virtual('addedRestaurants', {
   foreignField: 'restAuthor'
 });
 
+userSchema.virtual('addedReviews', {
+  ref: 'Restaurant',
+  localField: '_id',
+  foreignField: 'reviews.reviewAuthor'
+});
+
 module.exports = mongoose.model('User', userSchema);

@@ -43,6 +43,10 @@ router.route('/logout')
   .get(authController.logout);
 
 router.route('/users/:userId')
+  .put(secureRoute, userController.update)
   .get(userController.show);
+
+router.route('/users/:userId/edit')
+  .get(secureRoute, userController.edit);
 
 module.exports = router;

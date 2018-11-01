@@ -1,5 +1,4 @@
 const Restaurant = require('../models/restaurant');
-// const User = require('../models/user');
 
 const createReview = (req, res) => {
   Restaurant.findById(req.params.restId)
