@@ -7,7 +7,7 @@ const registerUserForm = (req, res) => {
 const registerUser = (req, res) => {
   User.create(req.body).then(user => {
     console.log('User registered:', user);
-    res.redirect('/');
+    res.redirect('/login');
   });
 };
 
