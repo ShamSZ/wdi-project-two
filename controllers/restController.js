@@ -2,6 +2,7 @@ const Restaurant = require('../models/restaurant');
 
 const home = (req, res) => res.render('pages/home');
 const about = (req, res) => res.render('pages/about');
+const comingSoon = (req, res) => res.render('pages/coming-soon');
 
 const indexRest = (req, res) => {
   Restaurant
@@ -56,6 +57,7 @@ const deleteRest = (req, res) => {
 module.exports = {
   home: home,
   about: about,
+  comingSoon: comingSoon,
   index: indexRest,
   show: showRest,
   new: newRest,

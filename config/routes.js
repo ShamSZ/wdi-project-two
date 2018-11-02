@@ -10,6 +10,7 @@ const router = require('express').Router();
 router.use('*', auth.checkAuthStatus);
 router.get('/', restController.home);
 router.get('/about', restController.about);
+router.get('/hotels', restController.comingSoon);
 
 
 router.post('/restaurants/:restId/reviews', reviewController.create);
