@@ -12,24 +12,20 @@ Rating Ninja is my second project from General Assembly's Web Development Immers
 
 ## Brief
 
+Create a platform for reviewing restaurants that meets the following technical requirements:
 
-You should create a platform for reviewing restaurants that meets the following minimum criteria:
-MVP
-
-Technical Requirements
-Your app must:
-Have at least 2 models – one representing a user and one that represents the main resource of your app.
-Include relationships - embedded or referenced.
-The app should include authentication.
-Have complete RESTful routes for at least one of your resources with all CRUD actions.
-Be deployed online and accessible to the public.
+* Have at least 2 models – one representing a user and one that represents the main resource of your app.
+* Include relationships - embedded or referenced.
+* The app should include authentication.
+* Have complete RESTful routes for at least one of your resources with all CRUD actions.
+* Be deployed online and accessible to the public.
 
 
 ## Technologies Used
 
 * EJS
 * CSS3
-* Bulma Framework
+* Bulma CSS Framework
 * JavaScript (ECMAScript 6)
 * Git
 * GitHub
@@ -42,20 +38,15 @@ Be deployed online and accessible to the public.
 
 ### Featured Piece of Code no. 1
 
-From `/app.js`.
+From `/controllers/authController.js`:
 ``` JavaScript
 const loginUser = (req, res) => {
   User.findOne({ email: req.body.email}).then( user => {
-    if(!user){
+    if(!user || req.body.password !== user.password){
       res.render('auth/failedLogin');
     } else {
-      if (req.body.password === user.password){
-        console.log('Correct password. Logging user in...');
-        req.session.userId = user._id;
-        res.redirect('/');
-      } else {
-        res.render('auth/failedLogin');
-      }
+      req.session.userId = user._id;
+      res.redirect('/');
     }
   });
 };
@@ -68,7 +59,7 @@ const loginUser = (req, res) => {
 
 ### Featured Piece of Code no. 2
 
-From `/style.css`.
+From `/models/restaurant.js`.
 ``` JavaScript
 restaurantSchema.virtual('averageRating')
   .get(function() {

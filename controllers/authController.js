@@ -17,16 +17,11 @@ const loginUserForm = (req, res) => {
 
 const loginUser = (req, res) => {
   User.findOne({ email: req.body.email}).then( user => {
-    if(!user){
+    if(!user || req.body.password !== user.password){
       res.render('auth/failedLogin');
     } else {
-      if (req.body.password === user.password){
-        console.log('Correct password. Logging user in...');
-        req.session.userId = user._id;
-        res.redirect('/');
-      } else {
-        res.render('auth/failedLogin');
-      }
+      req.session.userId = user._id;
+      res.redirect('/');
     }
   });
 };
