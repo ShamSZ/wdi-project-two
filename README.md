@@ -1,8 +1,8 @@
 # General Assembly WDI Project 2: Rating Ninja
 
-[Heroku](https://rating-ninja.herokuapp.com/).
+[Heroku](https://rating-ninja.herokuapp.com/)
 
-[GitHub Repo](https://github.com/ShamSZ/wdi-project-two).
+[GitHub Repo](https://github.com/ShamSZ/wdi-project-two)
 
 Rating Ninja is a web application that uses MongoDB, Express and Node.js to store a collection of user added data such as Restaurants. It utilises user authentication to register and log a user in to allow them to make changes to their own data and to add reviews to all restaurants.
 
@@ -11,6 +11,19 @@ Rating Ninja is my second project from General Assembly's Web Development Immers
 ## Screenshots of all screens
 
 ## Brief
+
+
+You should create a platform for reviewing restaurants that meets the following minimum criteria:
+MVP
+
+Technical Requirements
+Your app must:
+Have at least 2 models – one representing a user and one that represents the main resource of your app.
+Include relationships - embedded or referenced.
+The app should include authentication.
+Have complete RESTful routes for at least one of your resources with all CRUD actions.
+Be deployed online and accessible to the public.
+
 
 ## Technologies Used
 
