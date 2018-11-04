@@ -36,6 +36,8 @@ Create a platform for reviewing restaurants that meets the following technical r
 
 ## Approach Taken
 
+
+
 ### Featured Piece of Code no. 1
 
 From `/controllers/authController.js`:
@@ -53,6 +55,7 @@ const loginUser = (req, res) => {
 ```
 
 ## MVP
+
 
 ### After some styling
 
@@ -76,16 +79,15 @@ restaurantSchema.virtual('averageRating')
 
 ## Wins and Blockers
 
-One of the problems I had initially, was the removal of  debris after it had left the grid; the console would return many errors stating it couldn't remove the class of undefined - I managed to get around this by limiting the movement of the debris only within the 10x20 grid.
 
-The biggest win, by far, was the amount of confidence I gained working with JavaScript during this project. I got the opportunity to apply my new learnings in a real-world project and achieved more than I had set out at the start.
+<!-- The biggest win, by far, was the amount of confidence I gained working with JavaScript during this project. I got the opportunity to apply my new learnings in a real-world project and achieved more than I had set out at the start. -->
 
 ## Future Content
 
-Along with adding the shooting functionality, there are a number of potential future features I'd like to implement, such as:
-* Boss game-mode, where the player must destroy an alien being that fires multiple projectiles at the player
-* An additional player(2nd spacecraft) that can help with Boss mode or just play Arcade mode to see who can score more points
-* Ability to choose from a variety of spacecraft with different images, survivability and weaponry
-* Ability to increase the grid size
-* Authentication so users can keep track of their highest scores, compare it to other players globally, develop their spacecraft with upgrades and achievements
-* And much more!
+There are a number of potential future features I could implement, such as:
+
+* Adding map functionality, for locating restaurants and geographical tagging
+* Search/sort by cuisine, rating, distance
+* Adding other services to rate, like hotels, car rentals, movies, books etc.
+* Review moderation
+* Password encryption
