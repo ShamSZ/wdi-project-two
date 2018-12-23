@@ -14,10 +14,10 @@ Create a platform for reviewing restaurants that meets the following technical r
 
 * Have at least 2 models – one representing a user and one that represents the main resource of your app.
 * Include relationships - embedded or referenced.
-* The app should include authentication.
 * Have complete RESTful routes for at least one of your resources with all CRUD actions.
 * Be deployed online and accessible to the public.
-
+* Have semantically clean HTML
+* The app should include authentication - with encrypted passwords & an authorisation flow.
 
 ## Technologies Used
 
@@ -40,9 +40,9 @@ The brief provided wireframes....
 ![Wireframes](/readme-images/wireframes.png)
 ### Functionality
 #### Average Ratings
-This piece of code is responsible for the virtual average rating calculation. It does that by summing all the review ratings and then dividing it by the number of reviews:
+To gauge each restaurants rating, I needed to calculate and display the average rating. Each review would be saved in an array within the restaurant object. It was better to use the existing data from the model instance rather than saving it as a separate property, so I used a virtual to calculate this each time that restaurant was called. The below code does that by summing all the review ratings and then dividing it by the number of reviews.
 
-From `/models/restaurant.js`.
+From `/models/restaurant.js`:
 ``` JavaScript
 restaurantSchema.virtual('averageRating')
 .get(function() {
@@ -57,6 +57,7 @@ restaurantSchema.virtual('averageRating')
 ```
 
 #### Authentication
+
 
 
 ### Featured Piece of Code no. 1
@@ -78,7 +79,7 @@ const loginUser = (req, res) => {
 
 ### Featured Piece of Code no. 2
 
-As an extra, I decided to add a User Edit page, that would allow the user to edit their details and change their password. To add a layer of security, the form requested the old password to make any changes:
+Once I had reached MVP, I decided to add a User Edit page that would allow the user to edit their details and change their password. To add a layer of security, the form requested the old password to make any changes:
 ``` JavaScript
 const updateUser = (req, res) => {
   if (req.body.oldPassword === res.locals.currentUser.password){
