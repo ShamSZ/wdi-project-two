@@ -156,15 +156,15 @@ Below is a list of some of the known bugs within the app:
 ## Wins and Blockers
 I was new to using the Bulma framework, so initially it was very slow progress as I had to search how to use this framework for every bit of styling I needed.
 
-I had fun tinkering with timestamps to get the date format as desired and HTML input options to get the 'right' selection method for price and star rating.
+Tinkering with timestamps to get the date format as desired and HTML input options to get the 'right' selection method for price/star-rating was fun.
 
 ## Future Content
 
 There are a number of potential future features I could implement, such as:
 
-* Adding map functionality, for locating restaurants and geographical tagging
-* Search/sort by cuisine, rating, distance
+* Adding map functionality, for locating restaurants and geographical tagging.
+* Search/sort by cuisine, rating, distance.
 * Adding other services to rate, like hotels, car rentals, movies, books etc.
-* Review/restaurant moderation
-* Password encryption
+* Review/restaurant moderation.
+* Password encryption.
 * And much more!
