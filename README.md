@@ -40,9 +40,8 @@ The brief provided wireframes....
 ![Wireframes](/readme-images/wireframes.png)
 ### Functionality
 #### Average Ratings
-To gauge each restaurants rating, I needed to calculate and display the average rating. Each review would be saved in an array within the restaurant object. It was better to use the existing data from the model instance rather than saving it as a separate property, so I used a virtual to calculate this each time that restaurant was called. The below code does that by summing all the review ratings and then dividing it by the number of reviews.
+To gauge each restaurants rating, I needed to calculate and display the average rating. Each review would be saved in an array within the restaurant object. It was better to use the existing data from the model instance rather than saving it as a separate property, so I created a virtual to calculate this each time that restaurant was called. The below code from `/models/restaurant.js` does that by summing all the review ratings and then dividing it by the number of reviews:
 
-From `/models/restaurant.js`:
 ``` JavaScript
 restaurantSchema.virtual('averageRating')
 .get(function() {
