@@ -18,6 +18,7 @@ Create a platform for reviewing restaurants that meets the following technical r
 * Be deployed online and accessible to the public.
 * Have semantically clean HTML
 * The app should include authentication - with encrypted passwords & an authorisation flow.
+* The app should be styled with Bulma.
 
 ## Technologies Used
 
@@ -33,14 +34,22 @@ Create a platform for reviewing restaurants that meets the following technical r
 * Node.js
 
 ## Approach Taken
-The brief provided wireframes....
+I started off by planning the routes I would need, general app structure and models: how many, fields & data types.
+
+![notes](/readme-images/project2-notes.jpg)
+
+Once I had this down on paper, It was easy to follow and I made progress quickly.
 
 
 ### Wireframes
+
+The brief provided wireframes drawn up by GA's UXDI students:
+
 ![Wireframes](/readme-images/wireframes.png)
 ### Functionality
 #### Average Ratings
 To gauge each restaurants rating, I needed to calculate and display the average rating. Each review would be saved in an array within the restaurant object. It was better to use the existing data from the model instance rather than saving it as a separate property, so I created a virtual to calculate this each time that restaurant was called. The below code from `/models/restaurant.js` does that by summing all the review ratings and then dividing it by the number of reviews:
+
 
 ``` JavaScript
 restaurantSchema.virtual('averageRating')
@@ -55,10 +64,21 @@ restaurantSchema.virtual('averageRating')
 }
 ```
 
-#### Authentication
+#### Embedded reference
+As I had intended on creating a user edit page, I wanted to ensure that the reviews would be updated with any change to the users data, like username. So I referenced the user in the reviews author.
 
-
-
+``` JavaScript
+const restaurantSchema = mongoose.Schema({
+  ...
+  reviews: [{
+    reviewAuthor: { type: mongoose.Schema.ObjectId, ref: 'User'},
+    comment: String,
+    rating: Number,
+    createdAt: { type: String }
+  }],
+  ...
+});
+```
 ### Featured Piece of Code no. 1
 The code below validates the user's credentials. If an incorrect email or password has been entered, a failed login page is rendered. There is only one extra line of text stating "Incorrect email or password". I thought this was a neat way of creating the illusion of a pop up message on the login page, without knowing how to create pop-up messages.
 
@@ -92,22 +112,51 @@ const updateUser = (req, res) => {
 ## Screenshots
 
 ### MVP
+![mvp index](/readme-images/mvp-index.png)
 
-### After some styling
+![mvp show](/readme-images/mvp-show.png)
+
+![mvp new](/readme-images/mvp-new.png)
+
+![mvp edit](/readme-images/mvp-edit.png)
 
 ### Final Product
+![register](/readme-images/register.png)
+**Home:**
+![home](/readme-images/home.png)
+![about](/readme-images/about.png)
+**Hotels:**
+![coming-soon](/readme-images/coming-soon.png)
+
+![index1](/readme-images/index1.png)
+![index2](/readme-images/index2.png)
+![new](/readme-images/new.png)
+
+![show1](/readme-images/show1.png)
+![show2](/readme-images/show2.png)
+
+![edit](/readme-images/edit.png)
+
+**User profile**
+![profile3](/readme-images/profile3.png)
+
+**Current user's profile:**
+![profile1](/readme-images/profile1.png)
+![profile2](/readme-images/profile2.png)
+
+![profile-edit](/readme-images/profile-edit.png)
 
 ## Bugs
 Below is a list of some of the known bugs within the app:
 
-* Edit event - The event date doesn't populate. I could try to resolve this by setting value to an ISO date format.
-* Location select - When picking a location suggestion from the drop-down list, it doesn't allow the user to insert a house number or extra info on the address input.
+* Review stars - When setting the rating, the stars don't indicate which value has been selected. This could be resolved by adding some styling once a selection has been made.
+* Multiple reviews - If multiple reviews have been made on the same restaurant by the user, the profile page repeats the restaurant name multiple times as having been reviewed. Time permitting, I would have filtered the array of addedReviews to remove duplicates.
 
 
 ## Wins and Blockers
+I was new to using the Bulma framework, so initially it was very slow progress as I had to search how to use this framework for every bit of styling I needed.
 
-
-<!-- The biggest win, by far, was the amount of confidence I gained working with JavaScript during this project. I got the opportunity to apply my new learnings in a real-world project and achieved more than I had set out at the start. -->
+I had fun tinkering with timestamps to get the date format as desired and HTML input options to get the 'right' selection method for price and star rating.
 
 ## Future Content
 
